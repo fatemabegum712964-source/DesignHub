@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Design Portfolio</title>
+<meta name="description" content="Graphic designer portfolio: social media posts, food posters and promo designs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#141110;
+  --surface:#1f1a17;
+  --line:#352e29;
+  --text:#fff1dc;
+  --muted:#c9b9a2;
+  --accent:#ffc531;
+  --accent-2:#ff6a1f;
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:'Outfit',system-ui,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+
+/* Header */
+header.top{
+  position:sticky;top:0;z-index:20;
+  background:rgba(20,17,16,.85);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Anton',sans-serif;font-size:24px;letter-spacing:.04em;text-decoration:none;text-transform:uppercase}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:22px;font-weight:500}
+nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+nav a:hover{color:var(--accent)}
+
+/* Hero */
+.hero{padding:96px 0 72px;position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;right:-120px;top:-80px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,106,31,.35),rgba(255,106,31,0));
+  pointer-events:none;
+}
+.eyebrow{
+  display:inline-block;color:var(--accent);font-weight:600;letter-spacing:.14em;
+  font-size:14px;text-transform:uppercase;margin-bottom:14px;
+}
+.hero h1{
+  font-family:'Anton',sans-serif;font-weight:400;
+  font-size:clamp(48px,9vw,112px);line-height:1;margin:0 0 20px;text-transform:uppercase;
+}
+.hero h1 em{font-style:normal;color:var(--accent-2)}
+.hero p{max-width:560px;color:var(--muted);font-size:19px;margin:0 0 32px}
+.btn{
+  display:inline-block;border:0;cursor:pointer;text-decoration:none;
+  background:var(--accent);color:#1b1512;font-weight:700;font-size:17px;
+  padding:14px 30px;border-radius:999px;transition:transform .15s,box-shadow .15s;
+  font-family:inherit;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,197,49,.25)}
+.btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--line);margin-left:10px}
+.btn.ghost:hover{border-color:var(--accent);box-shadow:none}
+.count{margin-top:36px;color:var(--muted);font-size:15px}
+.count b{color:var(--text);font-size:20px}
+
+/* Work */
+section{padding:72px 0}
+.section-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:18px;margin-bottom:28px}
+.section-head h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(32px,5vw,52px);margin:0;text-transform:uppercase}
+.filters{display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  background:var(--surface);color:var(--muted);border:1px solid var(--line);
+  padding:8px 18px;border-radius:999px;cursor:pointer;font-size:15px;font-family:inherit;
+  transition:all .2s;
+}
+.chip:hover{color:var(--text);border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);color:#1b1512;border-color:var(--accent);font-weight:700}
+
+.grid{columns:3 300px;column-gap:20px}
+.card{
+  display:block;width:100%;break-inside:avoid;margin:0 0 20px;padding:0;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;cursor:pointer;text-align:left;color:inherit;position:relative;
+  transition:transform .25s,border-color .25s,box-shadow .25s;font-family:inherit;
+}
+.card:hover,.card:focus-visible{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 16px 36px rgba(0,0,0,.45);outline:none}
+.card img{display:block;width:100%;height:auto}
+.card .meta{padding:14px 16px 16px}
+.card .meta strong{display:block;font-size:18px}
+.card .meta span{color:var(--muted);font-size:14px}
+.card.missing .ph{
+  aspect-ratio:4/5;display:grid;place-items:center;text-align:center;padding:20px;
+  color:var(--muted);font-size:14px;background:repeating-linear-gradient(45deg,#1f1a17,#1f1a17 12px,#241e1a 12px,#241e1a 24px);
+}
+.empty{color:var(--muted);padding:40px 0}
+
+.adder{
+  margin-top:20px;padding:18px 20px;border:1.5px dashed var(--line);border-radius:var(--radius);
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;color:var(--muted);font-size:15px;
+}
+.adder input{display:none}
+.adder label{cursor:pointer}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about p{color:var(--muted);font-size:18px;margin:0 0 16px}
+.skills{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none}
+.skills li{background:var(--surface);border:1px solid var(--line);padding:8px 16px;border-radius:999px;font-size:15px}
+
+/* Contact */
+.contact-box{
+  background:linear-gradient(135deg,#2a1c14,#1f1a17);border:1px solid var(--line);
+  border-radius:28px;padding:clamp(28px,5vw,56px);text-align:center;
+}
+.contact-box h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(32px,5vw,56px);margin:0 0 12px;text-transform:uppercase}
+.contact-box p{color:var(--muted);margin:0 0 28px;font-size:18px}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+
+footer{padding:32px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px;text-align:center}
+
+/* Lightbox */
+.lb{
+  position:fixed;inset:0;z-index:50;background:rgba(10,8,7,.94);
+  display:none;align-items:center;justify-content:center;padding:24px;
+}
+.lb.open{display:flex}
+.lb figure{margin:0;max-width:min(92vw,860px);max-height:92vh;display:flex;flex-direction:column;gap:12px;align-items:center}
+.lb img{max-width:100%;max-height:78vh;border-radius:12px;display:block}
+.lb figcaption{text-align:center}
+.lb figcaption strong{display:block;font-size:20px}
+.lb figcaption span{color:var(--muted);font-size:15px}
+.lb button{
+  position:absolute;background:rgba(255,241,220,.1);color:var(--text);border:0;cursor:pointer;
+  width:48px;height:48px;border-radius:50%;font-size:24px;display:grid;place-items:center;transition:background .2s;
+}
+.lb button:hover{background:var(--accent);color:#1b1512}
+.lb .close{top:18px;right:18px}
+.lb .prev{left:18px;top:50%;transform:translateY(-50%)}
+.lb .next{right:18px;top:50%;transform:translateY(-50%)}
+
+@media (max-width:760px){
+  nav{display:none}
+  .about{grid-template-columns:1fr}
+  .btn.ghost{margin:10px 0 0}
+  .hero{padding-top:64px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">[Your <span>Name</span>]</a>
+    <nav aria-label="Main menu">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Graphic Designer</span>
+      <h1>I design<br><em>eye-catching</em><br>visuals</h1>
+      <p>Social media posts, food posters and promo designs that make people stop scrolling and notice your business.</p>
+      <a class="btn" href="#work">View my work</a>
+      <a class="btn ghost" href="#contact">Hire me</a>
+      <div class="count"><b id="total">0</b> designs in the gallery</div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>My Work</h2>
+        <div class="filters" id="filters" role="group" aria-label="Category filter"></div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+      <p class="empty" id="empty" hidden>No designs in this category yet.</p>
+
+      <div class="adder">
+        <span>Want a quick preview? Pick your images here (they disappear on refresh; see the instructions in the code to add them permanently).</span>
+        <label class="btn ghost" style="margin:0">
+          Choose images
+          <input type="file" id="picker" accept="image/*" multiple>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <div class="section-head" style="margin-bottom:18px"><h2>About Me</h2></div>
+        <p>Write 2-3 lines about yourself here: when you started designing, what kind of work you love, and what clients can expect from you.</p>
+        <p>In every design I focus on the balance of color, text and imagery, so the message lands at first glance.</p>
+      </div>
+      <div>
+        <div class="section-head" style="margin-bottom:18px"><h2>What I Do</h2></div>
+        <ul class="skills">
+          <li>Social media posts</li>
+          <li>Food promo posters</li>
+          <li>Banner design</li>
+          <li>Logo concepts</li>
+          <li>Offer &amp; discount creatives</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <h2>Let's work together</h2>
+        <p>Need a design for your business? Send me a message.</p>
+        <div class="links">
+          <!-- Replace these links with your own details -->
+          <a class="btn" href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn ghost" style="margin:0" href="mailto:you@example.com">Email</a>
+          <a class="btn ghost" style="margin:0" href="https://facebook.com/your-page" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> [Your Name]. All designs are my own work.</div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Design viewer">
+  <button class="close" id="lbClose" aria-label="Close">✕</button>
+  <button class="prev" id="lbPrev" aria-label="Previous design">‹</button>
+  <button class="next" id="lbNext" aria-label="Next design">›</button>
+  <figure>
+    <img id="lbImg" alt="">
+    <figcaption><strong id="lbTitle"></strong><span id="lbCat"></span></figcaption>
+  </figure>
+</div>
+
+<script>
+/* ==========================================================
+   HOW TO ADD YOUR DESIGNS:
+   1. Create a folder named "images" next to this file
+   2. Put your design images (PNG/JPG) inside it
+   3. Add one line per design to the list below:
+      { title: "Design name", category: "Category", src: "images/file-name.png" },
+   ========================================================== */
+const DESIGNS = [
+  { title: "Double Cheese Burger", category: "Food Poster", src: "images/design-1.png" },
+  { title: "Spicy Burger 50% Off", category: "Food Poster", src: "images/design-2.png" },
+  { title: "Burger Promo Yellow",  category: "Promo Banner", src: "images/design-3.png" }
+];
+
+const ALL = 'All';
+const grid = document.getElementById('grid');
+const filtersEl = document.getElementById('filters');
+const emptyEl = document.getElementById('empty');
+const totalEl = document.getElementById('total');
+let active = ALL;
+let visible = [];
+
+function categories(){
+  return [ALL, ...new Set(DESIGNS.map(d => d.category))];
+}
+
+function renderFilters(){
+  filtersEl.innerHTML = '';
+  categories().forEach(cat => {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.type = 'button';
+    b.textContent = cat;
+    b.setAttribute('aria-pressed', String(cat === active));
+    b.addEventListener('click', () => { active = cat; renderFilters(); renderGrid(); });
+    filtersEl.appendChild(b);
+  });
+}
+
+function renderGrid(){
+  visible = DESIGNS.filter(d => active === ALL || d.category === active);
+  grid.innerHTML = '';
+  emptyEl.hidden = visible.length > 0;
+  totalEl.textContent = DESIGNS.length;
+
+  visible.forEach((d, i) => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'card';
+    card.setAttribute('aria-label', 'View ' + d.title + ' larger');
+
+    const img = new Image();
+    img.src = d.src;
+    img.alt = d.title;
+    img.loading = 'lazy';
+    img.addEventListener('error', () => {
+      card.classList.add('missing');
+      img.replaceWith(Object.assign(document.createElement('div'), {
+        className: 'ph',
+        textContent: 'Image not found: ' + d.src
+      }));
+    });
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = '<strong></strong><span></span>';
+    meta.children[0].textContent = d.title;
+    meta.children[1].textContent = d.category;
+
+    card.append(img, meta);
+    card.addEventListener('click', () => openLb(i));
+    grid.appendChild(card);
+  });
+}
+
+/* Lightbox */
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lbImg');
+const lbTitle = document.getElementById('lbTitle');
+const lbCat = document.getElementById('lbCat');
+let current = 0;
+let lastFocus = null;
+
+function showLb(){
+  const d = visible[current];
+  if(!d) return;
+  lbImg.src = d.src;
+  lbImg.alt = d.title;
+  lbTitle.textContent = d.title;
+  lbCat.textContent = d.category;
+}
+function openLb(i){
+  lastFocus = document.activeElement;
+  current = i;
+  showLb();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('lbClose').focus();
+}
+function closeLb(){
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  if(lastFocus) lastFocus.focus();
+}
+function step(n){
+  current = (current + n + visible.length) % visible.length;
+  showLb();
+}
+document.getElementById('lbClose').addEventListener('click', closeLb);
+document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+document.getElementById('lbNext').addEventListener('click', () => step(1));
+lb.addEventListener('click', e => { if(e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => {
+  if(!lb.classList.contains('open')) return;
+  if(e.key === 'Escape') closeLb();
+  if(e.key === 'ArrowLeft') step(-1);
+  if(e.key === 'ArrowRight') step(1);
+});
+
+/* Quick preview from chosen files (not saved) */
+document.getElementById('picker').addEventListener('change', e => {
+  [...e.target.files].forEach(f => {
+    DESIGNS.push({
+      title: f.name.replace(/\.[^.]+$/, ''),
+      category: 'Preview',
+      src: URL.createObjectURL(f)
+    });
+  });
+  active = ALL;
+  renderFilters();
+  renderGrid();
+  e.target.value = '';
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+renderFilters();
+renderGrid();
+</script>
+</body>
+</html>
